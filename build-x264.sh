@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONFIGURE_FLAGS="--enable-static --enable-pic --disable-cli"
+CONFIGURE_FLAGS="--enable-static --enable-pic --disable-cli --disable-asm"
 
 # sunminmin blog: http://depthlove.github.io/
 # modified by sunminmin, 2015/09/07
@@ -54,7 +54,7 @@ then
     if [ ! -r $SOURCE ]
     then
     echo 'x264 source not found. Trying to download...'
-    curl https://download.videolan.org/pub/x264/snapshots/x264-snapshot-20140930-2245.tar.bz2 | tar xj && ln -s x264-snapshot-20140930-2245 x264 || exit 1
+    curl https://download.videolan.org/pub/x264/snapshots/x264-snapshot-20191217-2245.tar.bz2 | tar xj && ln -s x264-snapshot-20191217-2245 x264 || exit 1
     fi
 # end: added by sunminmin, 2015/09/07
 
@@ -77,7 +77,7 @@ then
 		    	CFLAGS="$CFLAGS -mios-simulator-version-min=7.0"
 		    	HOST=
 		    else
-		    	CFLAGS="$CFLAGS -mios-simulator-version-min=5.0"
+		    	CFLAGS="$CFLAGS -mios-simulator-version-min=7.0"
 			HOST="--host=i386-apple-darwin"
 		    fi
 		else
