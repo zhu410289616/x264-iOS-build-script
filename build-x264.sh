@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONFIGURE_FLAGS="--enable-static --enable-pic --disable-cli --disable-asm"
+CONFIGURE_FLAGS="--enable-static --enable-pic --disable-cli"
 
 # sunminmin blog: http://depthlove.github.io/
 # modified by sunminmin, 2015/09/07
