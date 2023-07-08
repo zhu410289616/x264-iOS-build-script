@@ -1,0 +1,3 @@
+[submodule "source/x264"]
+	path = source/x264
+	url = https://code.videolan.org/videolan/x264.git
