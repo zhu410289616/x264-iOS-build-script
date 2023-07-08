@@ -6,9 +6,13 @@ CONFIGURE_FLAGS="--enable-static --enable-pic --disable-cli"
 # modified by sunminmin, 2015/09/07
 ARCHS="arm64 armv7s armv7 x86_64 i386"
 
+# source file
+X264_SOURCE_VERSION="x264-snapshot-20191217-2245"
+X264_SOURCE_WEBSITE="https://download.videolan.org/pub/x264/snapshots/"
+X264_SOURCE_URL="$X264_SOURCE_WEBSITE$X264_SOURCE_VERSION.tar.bz2"
 
 # directories
-SOURCE="x264"
+X264_SOURCE_DIR=$X264_SOURCE_VERSION
 FAT="x264-iOS"
 
 SCRATCH="scratch-x264"
@@ -51,10 +55,10 @@ then
     fi
 
 
-    if [ ! -r $SOURCE ]
+    if [ ! -r $X264_SOURCE_DIR ]
     then
     echo 'x264 source not found. Trying to download...'
-    curl https://download.videolan.org/pub/x264/snapshots/x264-snapshot-20191217-2245.tar.bz2 | tar xj && ln -s x264-snapshot-20191217-2245 x264 || exit 1
+    curl $X264_SOURCE_URL | tar xj || exit 1
     fi
 # end: added by sunminmin, 2015/09/07
 
@@ -107,7 +111,7 @@ then
 		CXXFLAGS="$CFLAGS"
 		LDFLAGS="$CFLAGS"
 
-		CC=$CC $CWD/$SOURCE/configure \
+		CC=$CC $CWD/$X264_SOURCE_DIR/configure \
 		    $CONFIGURE_FLAGS \
 		    $HOST \
 		    --extra-cflags="$CFLAGS" \
